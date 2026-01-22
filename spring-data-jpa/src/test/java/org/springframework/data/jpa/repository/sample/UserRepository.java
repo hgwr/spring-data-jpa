@@ -92,6 +92,8 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
 	@Override
 	java.util.Optional<User> findById(Integer primaryKey);
 
+	Optional<User> findByIdAndActive(Integer id, boolean active);
+
 	/**
 	 * Redeclaration of {@link CrudRepository#deleteById(java.lang.Object)}. to make sure the transaction configuration of
 	 * the original method is considered if the redeclaration does not carry a {@link Transactional} annotation.
@@ -125,6 +127,8 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
 	@Query("select u from User u where u.emailAddress = ?1")
 	@Transactional(readOnly = true)
 	User findByAnnotatedQuery(String emailAddress);
+
+	Optional<User> findByIdAndIsDeleted(Integer id, Integer isDeleted);
 
 	/**
 	 * Method to directly create query from and adding a {@link Pageable} parameter to be regarded on query execution.
