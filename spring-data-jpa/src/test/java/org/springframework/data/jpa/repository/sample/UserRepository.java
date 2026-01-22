@@ -92,6 +92,9 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
 	@Override
 	java.util.Optional<User> findById(Integer primaryKey);
 
+	Optional<User> findByIdAndIsDeleted(Integer id, Integer isDeleted);
+
+
 	/**
 	 * Redeclaration of {@link CrudRepository#deleteById(java.lang.Object)}. to make sure the transaction configuration of
 	 * the original method is considered if the redeclaration does not carry a {@link Transactional} annotation.

@@ -122,6 +122,7 @@ public class User {
 	private String lastname;
 	private int age;
 	private boolean active;
+	private Integer isDeleted;
 	@Temporal(TemporalType.TIMESTAMP) private Date createdAt;
 
 	@Column(nullable = false, unique = true) private String emailAddress;
@@ -214,6 +215,16 @@ public class User {
 
 	public boolean isActive() {
 		return active;
+	}
+
+	public Integer getIsDeleted() {
+
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Integer isDeleted) {
+
+		this.isDeleted = isDeleted;
 	}
 
 	public Set<Role> getRoles() {
